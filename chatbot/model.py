@@ -41,4 +41,3 @@ class ChatbotModel:
         response = self.chain.run({"history": self.memory, "context":"", "question": question})
         
         return response
-    
