@@ -86,4 +86,3 @@ Context: {context}
 
 Question: {question}
 """
-
