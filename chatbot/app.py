@@ -70,3 +70,4 @@ def create_app():
         return redirect(url_for('index'))  # Redirect back to index page
     
     return app  # Return the configured app instance
+
