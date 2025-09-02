@@ -72,4 +72,3 @@ def create_app():
     return app  # Return the configured app instance
 
 
-
