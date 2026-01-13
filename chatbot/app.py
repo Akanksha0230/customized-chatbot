@@ -6,7 +6,9 @@ from chatbot import Chatbot
 def create_app():
     """Create and configure the Flask application."""
     app = Flask(__name__)
-    app.secret_key = os.urandom(24)  # Set a secret key for session management
+    #app.secret_key = os.urandom(24)  # Set a secret key for session management
+    app.secret_key = os.getenv("SECRET_KEY", "fallback-secret-key")
+
     logger = CustomLogger().get_logger()  # Initialize custom logger
 
     @app.route('/', methods=['GET', 'POST'])
@@ -15,8 +17,10 @@ def create_app():
         error_message = None  # Variable to hold any error messages
 
         if request.method == 'POST':
-            api_key = request.form['api_key']
-            
+            #api_key = request.form['api_key']
+            api_key = os.getenv("API_KEY")
+            if not api_key:
+              raise Exception("GROQ_API_KEY not set")
             try:
                 session['groq_api_key'] = api_key  # Store API key in session
                 
